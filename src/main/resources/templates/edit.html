@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Edición de un libro</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container mt-4">
+		<div class="col-sm-6">
+			<form th:action="@{/update}" th:object=${libro} method="post">
+				<div class="card">
+					<div class="card-header">
+						<h3>Edición de libro</h3>
+					</div>
+					<div class="card-body">
+							<input th:field="*{id}" type="text" class="form-control" hidden="true">
+						<div class="form-group">
+							<label>Libro</label>
+							<input th:field="*{nombre}" type="text" class="form-control">
+						</div>
+						<div class="form-group">
+							<label>Autor</label>
+							<input th:field="*{autor}" type="text" class="form-control">
+						</div>
+					</div>
+					<div class="card-footer">
+						<input type="submit" value="Actualizar" class="btn btn-success">
+						<a th:href="@{/}" class="btn btn-success">Volver</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

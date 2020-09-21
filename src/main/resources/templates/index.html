@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container mt-4">
+	
+		<h3 th:inline="text">Bienvenido [[${#httpServletRequest.remoteUser}]]</h3>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Cerrar Sesión">
+		</form>
+	
+		<a th:href="@{/create}" class="btn btn-success">Agregar</a>
+		<br><br>
+		<table class="table">
+			<thead>
+				<tr>
+					<td>ID</td>
+					<td>Título</td>
+					<td>Autor</td>
+					<td>Acciones</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="libro:${libros}">
+					<td th:text="${libro.id}"></td>
+					<td th:text="${libro.nombre}"></td>
+					<td th:text="${libro.autor}"></td>
+					<td>
+						<a th:href="@{/actualizar/}+${libro.id}" class="btn btn-warning">Editar</a>
+						<a th:href="@{/eliminar/}+${libro.id}" class="btn btn-danger">Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
